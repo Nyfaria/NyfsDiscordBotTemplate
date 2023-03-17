@@ -36,7 +36,7 @@ public class DiscordBot {
 
             // optionally block until JDA is ready
             discordBot.awaitReady();
-        } catch (LoginException | InterruptedException e) {
+        } catch (InterruptedException e) {
             System.err.println("Couldn't login.");
             e.printStackTrace();
         }

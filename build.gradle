@@ -1,24 +1,34 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
-group 'org.example'
+group 'dev._100media'
 version '0.0.1'
 
 application {
-    mainClass.set('org.botexample.DiscordBot')
+    mainClass.set('dev._100media.discordbot.DiscordBot')
 }
-
+configurations {
+    implementation.extendsFrom shadow
+}
 repositories {
     jcenter()
 }
 
 dependencies {
-    implementation 'net.dv8tion:JDA:4.2.0_227'
-    implementation 'org.slf4j:slf4j-log4j12:1.7.30'
+    implementation 'net.dv8tion:JDA:5.0.0-beta.5'
+    shadow 'org.slf4j:slf4j-log4j12:1.7.30'
+    implementation 'org.postgresql:postgresql:42.5.4'
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre11'
 }
 
 test {
     useJUnitPlatform()
+}
+shadowJar {
+    archiveBaseName.set('HMBot')
+    archiveClassifier.set('')
+    archiveVersion.set('')
 }
